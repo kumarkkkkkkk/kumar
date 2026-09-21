@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FitZone | Premium Fitness Gym</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Inter,Arial,sans-serif;background:#0b0b0b;color:#fff;line-height:1.6}
+a{text-decoration:none;color:inherit}
+.container{width:min(1150px,92%);margin:auto}
+.btn{display:inline-block;padding:14px 26px;border-radius:8px;background:#d8ff00;color:#0a0a0a;font-weight:800;border:0;cursor:pointer;transition:.25s}
+.btn:hover{transform:translateY(-3px);box-shadow:0 10px 25px rgba(216,255,0,.18)}
+.btn.dark{background:#fff}
+.section{padding:90px 0}
+.section-title{text-align:center;margin-bottom:50px}
+.section-title .tag{color:#d8ff00;font-weight:800;text-transform:uppercase;letter-spacing:2px;font-size:13px}
+.section-title h2{font-size:clamp(32px,5vw,52px);margin:8px 0}
+.section-title p{color:#aaa;max-width:620px;margin:auto}
+
+header{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(10,10,10,.88);backdrop-filter:blur(12px);border-bottom:1px solid #222}
+nav{height:72px;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:25px;font-weight:900;letter-spacing:-1px}.logo span{color:#d8ff00}
+.nav-links{display:flex;gap:28px;align-items:center}.nav-links a{color:#ddd;font-size:14px;font-weight:600}.nav-links a:hover{color:#d8ff00}
+.menu{display:none;font-size:28px;cursor:pointer}
+
+.hero{min-height:100vh;display:flex;align-items:center;background:linear-gradient(90deg,rgba(0,0,0,.9),rgba(0,0,0,.45)),url('https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1800&q=85') center/cover}
+.hero-content{max-width:720px;padding-top:70px}.hero .tag{color:#d8ff00;font-weight:800;letter-spacing:3px;text-transform:uppercase}
+.hero h1{font-size:clamp(45px,7vw,82px);line-height:.98;margin:16px 0 22px;font-weight:900}
+.hero h1 span{color:#d8ff00}.hero p{color:#ddd;font-size:18px;max-width:600px;margin-bottom:30px}
+.hero-buttons{display:flex;gap:14px;flex-wrap:wrap}
+
+.stats{background:#151515;border-bottom:1px solid #252525}
+.stats-grid{display:grid;grid-template-columns:repeat(4,1fr);padding:25px 0;text-align:center}
+.stat{border-right:1px solid #292929}.stat:last-child{border:0}.stat h3{font-size:30px;color:#d8ff00}.stat p{color:#999;font-size:13px}
+
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center}
+.about-img{height:500px;border-radius:18px;background:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?auto=format&fit=crop&w=1000&q=85') center/cover}
+.about-text h2{font-size:44px;line-height:1.1;margin:10px 0 20px}.about-text p{color:#aaa;margin-bottom:25px}
+.features{display:grid;grid-template-columns:1fr 1fr;gap:18px}.feature{background:#151515;padding:18px;border-radius:12px}.feature b{display:block;margin-bottom:5px}.feature span{font-size:13px;color:#999}
+
+.programs{background:#101010}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.card{background:#171717;border:1px solid #242424;border-radius:15px;overflow:hidden;transition:.25s}.card:hover{transform:translateY(-7px);border-color:#d8ff00}
+.card-img{height:210px;background-size:cover;background-position:center}
+.card-body{padding:22px}.card-body h3{font-size:22px;margin-bottom:8px}.card-body p{color:#999;font-size:14px;margin-bottom:18px}.link{color:#d8ff00;font-weight:800;font-size:13px}
+
+.trainers .card-img{height:300px}.trainer1{background-image:url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=700&q=85')}
+.trainer2{background-image:url('https://images.unsplash.com/photo-1544717305-2782549b5136?auto=format&fit=crop&w=700&q=85')}
+.trainer3{background-image:url('https://images.unsplash.com/photo-1594381898411-846e7d193883?auto=format&fit=crop&w=700&q=85')}
+
+.pricing{background:#101010}
+.price-card{padding:30px;border:1px solid #292929;border-radius:16px;background:#151515}.price-card.featured{border:2px solid #d8ff00;position:relative}.badge{position:absolute;top:18px;right:18px;background:#d8ff00;color:#111;padding:6px 10px;border-radius:20px;font-size:11px;font-weight:900}
+.price-card h3{color:#bbb}.price{font-size:42px;font-weight:900;margin:10px 0 20px}.price small{font-size:13px;color:#888;font-weight:500}.price-card ul{list-style:none;color:#aaa;margin-bottom:25px}.price-card li{padding:7px 0}.price-card li::before{content:'✓';color:#d8ff00;font-weight:900;margin-right:10px}
+
+.schedule table{width:100%;border-collapse:collapse;background:#151515;border-radius:14px;overflow:hidden}.schedule th,.schedule td{padding:17px;text-align:center;border-bottom:1px solid #292929}.schedule th{background:#d8ff00;color:#111}.schedule td{color:#bbb}.schedule tr:last-child td{border:0}
+
+.cta{margin-top:0;background:linear-gradient(100deg,#d8ff00,#b7d900);color:#101010;text-align:center;padding:65px 20px}.cta h2{font-size:42px;line-height:1.1;margin-bottom:12px}.cta p{margin-bottom:22px}.cta .btn{background:#111;color:#fff}
+
+.contact{display:grid;grid-template-columns:.8fr 1.2fr;gap:45px}.contact-info h2{font-size:42px;line-height:1.1;margin:10px 0 18px}.contact-info p{color:#999}.contact-item{margin-top:25px}.contact-item strong{display:block;color:#d8ff00}.contact-item span{color:#bbb}
+form{background:#151515;padding:30px;border-radius:15px}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:15px}input,select,textarea{width:100%;padding:14px;background:#0e0e0e;border:1px solid #292929;color:#fff;border-radius:8px;outline:none}textarea{height:130px;resize:vertical}.full{grid-column:1/-1}form .btn{width:100%;margin-top:15px}
+
+footer{padding:30px 0;border-top:1px solid #222;color:#777;font-size:13px}.footer-inner{display:flex;justify-content:space-between;gap:20px}.social{color:#d8ff00}
+
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.8);display:none;align-items:center;justify-content:center;z-index:2000;padding:20px}.modal.show{display:flex}.modal-box{background:#171717;padding:30px;border-radius:15px;width:min(480px,100%);position:relative}.close{position:absolute;right:18px;top:12px;font-size:28px;cursor:pointer;color:#aaa}.modal-box h2{margin-bottom:20px}.modal-box input,.modal-box select{margin-bottom:12px}.success{display:none;text-align:center;padding:20px}.success h3{color:#d8ff00;margin-bottom:8px}
+
+@media(max-width:850px){
+.nav-links{display:none;position:absolute;top:72px;left:0;width:100%;background:#101010;flex-direction:column;padding:25px}.nav-links.active{display:flex}.menu{display:block}
+.stats-grid{grid-template-columns:1fr 1fr}.stat{padding:12px}.stat:nth-child(2){border:0}.about-grid,.contact{grid-template-columns:1fr}.cards{grid-template-columns:1fr 1fr}
+}
+@media(max-width:600px){
+.section{padding:65px 0}.cards{grid-template-columns:1fr}.hero h1{font-size:48px}.form-grid{grid-template-columns:1fr}.full{grid-column:auto}.footer-inner{flex-direction:column}.about-img{height:350px}
+}
+</style>
+</head>
+<body>
+
+<header>
+<nav class="container">
+<a class="logo" href="#home">FIT<span>ZONE</span></a>
+<div class="nav-links" id="navLinks">
+<a href="#home">Home</a><a href="#about">About</a><a href="#programs">Programs</a>
+<a href="#trainers">Trainers</a><a href="#pricing">Membership</a><a href="#schedule">Classes</a>
+<a href="#contact">Contact</a>
+<a href="#pricing" class="btn">JOIN NOW</a>
+</div>
+<div class="menu" onclick="toggleMenu()">☰</div>
+</nav>
+</header>
+
+<section class="hero" id="home">
+<div class="container">
+<div class="hero-content">
+<div class="tag">Train • Transform • Triumph</div>
+<h1>BUILD YOUR <span>BEST</span> VERSION.</h1>
+<p>Premium training, expert coaches and a powerful community designed to help you become stronger, healthier and more confident.</p>
+<div class="hero-buttons">
+<a class="btn" href="#pricing">START YOUR JOURNEY</a>
+<a class="btn dark" href="#programs">EXPLORE PROGRAMS</a>
+</div>
+</div>
+</div>
+</section>
+
+<section class="stats">
+<div class="container stats-grid">
+<div class="stat"><h3>500+</h3><p>ACTIVE MEMBERS</p></div>
+<div class="stat"><h3>20+</h3><p>EXPERT TRAINERS</p></div>
+<div class="stat"><h3>10+</h3><p>FITNESS PROGRAMS</p></div>
+<div class="stat"><h3>24/7</h3><p>GYM ACCESS</p></div>
+</div>
+</section>
+
+<section class="section" id="about">
+<div class="container about-grid">
+<div class="about-img"></div>
+<div class="about-text">
+<div class="section-title" style="text-align:left;margin-bottom:20px"><div class="tag">Why FitZone?</div><h2>MORE THAN A GYM.</h2></div>
+<p>FitZone is built for people who refuse to settle. Whether your goal is muscle gain, fat loss, better endurance or simply a healthier lifestyle, our team gives you the environment and support to make it happen.</p>
+<div class="features">
+<div class="feature">🏋️ <b>Modern Equipment</b><span>Everything you need for serious training.</span></div>
+<div class="feature">👨‍🏫 <b>Expert Trainers</b><span>Personal guidance from certified coaches.</span></div>
+<div class="feature">🥗 <b>Nutrition Support</b><span>Practical plans built around your goals.</span></div>
+<div class="feature">🔥 <b>Community</b><span>Stay motivated with a positive fitness family.</span></div>
+</div>
+</div>
+</div>
+</section>
+
+<section class="section programs" id="programs">
+<div class="container">
+<div class="section-title"><div class="tag">What We Offer</div><h2>TRAIN WITH PURPOSE.</h2><p>Choose a program that matches your goal and let our coaches help you stay consistent.</p></div>
+<div class="cards">
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?auto=format&fit=crop&w=900&q=85')"></div><div class="card-body"><h3>Muscle Building</h3><p>Progressive strength training to build lean muscle and power.</p><a class="link" href="#contact">VIEW PROGRAM →</a></div></div>
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1538805060514-97d9cc17730c?auto=format&fit=crop&w=900&q=85')"></div><div class="card-body"><h3>Weight Loss</h3><p>Structured workouts and sustainable habits to reach your target.</p><a class="link" href="#contact">VIEW PROGRAM →</a></div></div>
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1534258936925-c58bed479fcb?auto=format&fit=crop&w=900&q=85')"></div><div class="card-body"><h3>HIIT Training</h3><p>High-intensity sessions that challenge your strength and stamina.</p><a class="link" href="#contact">VIEW PROGRAM →</a></div></div>
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1517838277536-f5f99be501b5?auto=format&fit=crop&w=900&q=85')"></div><div class="card-body"><h3>Cardio</h3><p>Improve endurance, energy and cardiovascular performance.</p><a class="link" href="#contact">VIEW PROGRAM →</a></div></div>
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?auto=format&fit=crop&w=900&q=85')"></div><div class="card-body"><h3>Yoga & Flexibility</h3><p>Improve mobility, balance and recovery with guided sessions.</p><a class="link" href="#contact">VIEW PROGRAM →</a></div></div>
+<div class="card"><div class="card-img" style="background-image:url('https://images.unsplash.com/photo-1571019613914-85f342c55f8d?auto=format&fit=crop&w=900&q=85')"></div><div class="card-body"><h3>Personal Training</h3><p>One-to-one coaching tailored to your body and fitness goals.</p><a class="link" href="#contact">VIEW PROGRAM →</a></div></div>
+</div>
+</div>
+</section>
+
+<section class="section trainers" id="trainers">
+<div class="container">
+<div class="section-title"><div class="tag">Meet The Team</div><h2>EXPERT COACHES.</h2><p>Get guidance from trainers who know how to turn effort into measurable progress.</p></div>
+<div class="cards">
+<div class="card"><div class="card-img trainer1"></div><div class="card-body"><h3>Arun Kumar</h3><p>Strength & Conditioning Coach • 8 Years Experience</p><span>★★★★★</span></div></div>
+<div class="card"><div class="card-img trainer2"></div><div class="card-body"><h3>Priya Sharma</h3><p>Yoga & Mobility Coach • 6 Years Experience</p><span>★★★★★</span></div></div>
+<div class="card"><div class="card-img trainer3"></div><div class="card-body"><h3>Rahul Raj</h3><p>Weight Loss & HIIT Coach • 7 Years Experience</p><span>★★★★★</span></div></div>
+</div>
+</div>
+</section>
+
+<section class="section pricing" id="pricing">
+<div class="container">
+<div class="section-title"><div class="tag">Membership</div><h2>CHOOSE YOUR PLAN.</h2><p>Simple membership options for every stage of your fitness journey.</p></div>
+<div class="cards">
+<div class="price-card"><h3>BASIC</h3><div class="price">₹999 <small>/ MONTH</small></div><ul><li>Gym Access</li><li>Cardio Area</li><li>Locker Facility</li><li>Basic Fitness Assessment</li></ul><button class="btn" onclick="openModal('BASIC')">JOIN NOW</button></div>
+<div class="price-card featured"><div class="badge">MOST POPULAR</div><h3>PREMIUM</h3><div class="price">₹1,999 <small>/ MONTH</small></div><ul><li>Everything in Basic</li><li>Personal Trainer Support</li><li>Workout Plan</li><li>Diet Guidance</li><li>Progress Tracking</li></ul><button class="btn" onclick="openModal('PREMIUM')">JOIN NOW</button></div>
+<div class="price-card"><h3>ELITE</h3><div class="price">₹2,999 <small>/ MONTH</small></div><ul><li>Everything in Premium</li><li>1-on-1 Training</li><li>Personalized Diet</li><li>Advanced Progress Tracking</li><li>Priority Support</li></ul><button class="btn" onclick="openModal('ELITE')">JOIN NOW</button></div>
+</div>
+</div>
+</section>
+
+<section class="section schedule" id="schedule">
+<div class="container">
+<div class="section-title"><div class="tag">Weekly Timetable</div><h2>CLASS SCHEDULE.</h2><p>Pick a session, show up and keep moving forward.</p></div>
+<table>
+<tr><th>TIME</th><th>MONDAY</th><th>TUESDAY</th><th>WEDNESDAY</th><th>THURSDAY</th><th>FRIDAY</th></tr>
+<tr><td>6:00 AM</td><td>Cardio</td><td>Yoga</td><td>HIIT</td><td>Strength</td><td>Cardio</td></tr>
+<tr><td>8:00 AM</td><td>Strength</td><td>Cardio</td><td>Strength</td><td>Yoga</td><td>HIIT</td></tr>
+<tr><td>5:00 PM</td><td>HIIT</td><td>Strength</td><td>Cardio</td><td>HIIT</td><td>Yoga</td></tr>
+<tr><td>7:00 PM</td><td>Strength</td><td>Yoga</td><td>HIIT</td><td>Cardio</td><td>Strength</td></tr>
+</table>
+</div>
+</section>
+
+<section class="cta">
+<h2>READY TO CHANGE YOUR LIFE?</h2>
+<p>Your strongest chapter starts today.</p>
+<a href="#pricing" class="btn">BECOME A MEMBER</a>
+</section>
+
+<section class="section" id="contact">
+<div class="container contact">
+<div class="contact-info">
+<div class="tag">Get In Touch</div>
+<h2>LET'S GET YOU MOVING.</h2>
+<p>Have a question about membership, classes or personal training? Send us a message.</p>
+<div class="contact-item"><strong>📍 LOCATION</strong><span>Chennai, Tamil Nadu</span></div>
+<div class="contact-item"><strong>📞 PHONE</strong><span>+91 98765 43210</span></div>
+<div class="contact-item"><strong>✉ EMAIL</strong><span>hello@fitzone.com</span></div>
+<div class="contact-item"><strong>⏰ OPENING HOURS</strong><span>Monday – Sunday • 5:00 AM – 11:00 PM</span></div>
+</div>
+<form onsubmit="sendMessage(event)">
+<div class="form-grid">
+<input required placeholder="Your Name">
+<input required type="email" placeholder="Email Address">
+<input placeholder="Phone Number">
+<select><option>General Enquiry</option><option>Membership</option><option>Personal Training</option><option>Classes</option></select>
+<textarea class="full" required placeholder="Your Message"></textarea>
+</div>
+<button class="btn" type="submit">SEND MESSAGE</button>
+</form>
+</div>
+</section>
+
+<footer>
+<div class="container footer-inner">
+<div>© 2026 FitZone Fitness. All rights reserved.</div>
+<div class="social">Instagram • Facebook • YouTube</div>
+</div>
+</footer>
+
+<div class="modal" id="modal">
+<div class="modal-box">
+<div class="close" onclick="closeModal()">×</div>
+<div id="joinForm">
+<h2>Join FitZone</h2>
+<p style="color:#999;margin-bottom:18px">Selected plan: <b id="selectedPlan" style="color:#d8ff00"></b></p>
+<input id="memberName" placeholder="Full Name">
+<input id="memberEmail" type="email" placeholder="Email Address">
+<input id="memberPhone" placeholder="Phone Number">
+<select id="memberGoal"><option>Muscle Building</option><option>Weight Loss</option><option>Fitness & Health</option><option>Strength</option></select>
+<button class="btn" style="width:100%;margin-top:8px" onclick="register()">SUBMIT REGISTRATION</button>
+</div>
+<div class="success" id="success">
+<h3>🎉 Registration Submitted!</h3>
+<p style="color:#aaa">Welcome to FitZone. Our team will contact you shortly.</p>
+<button class="btn" style="margin-top:18px" onclick="closeModal()">DONE</button>
+</div>
+</div>
+</div>
+
+<script>
+function toggleMenu(){document.getElementById('navLinks').classList.toggle('active')}
+function openModal(plan){
+ document.getElementById('selectedPlan').textContent=plan;
+ document.getElementById('modal').classList.add('show');
+ document.getElementById('joinForm').style.display='block';
+ document.getElementById('success').style.display='none';
+}
+function closeModal(){document.getElementById('modal').classList.remove('show')}
+function register(){
+ const name=document.getElementById('memberName').value.trim();
+ const email=document.getElementById('memberEmail').value.trim();
+ const phone=document.getElementById('memberPhone').value.trim();
+ if(!name||!email||!phone){alert('Please fill in your name, email and phone number.');return}
+ document.getElementById('joinForm').style.display='none';
+ document.getElementById('success').style.display='block';
+}
+function sendMessage(e){
+ e.preventDefault();
+ alert('Thank you! Your message has been sent to FitZone.');
+ e.target.reset();
+}
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('active')));
+</script>
+</body>
+</html>
